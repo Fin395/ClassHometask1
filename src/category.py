@@ -28,8 +28,15 @@ class Category:
 
     @property
     def products(self) -> str:
-        """Определяем геттер для приватного атрибута "self.__products" """
+        """Создаем геттер для атрибута "self.__products", который будет выводить список товаров в виде строк"""
         product_str = ""
         for product in self.__products:
             product_str += f"{product.name}, {product.price} руб. Остаток: {product.quantity} шт.\n"
         return product_str
+
+    @property
+    def products_in_list(self) -> list:
+        """
+        Создаем геттер для атрибута "self.__products" для получения информации о количества товара в списке при
+        инициализации экземпляров класса "Category" """
+        return self.__products
