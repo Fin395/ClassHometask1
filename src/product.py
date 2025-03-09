@@ -23,7 +23,12 @@ class Product:
         new_attributes = one_more_product.keys()
         for attribute in new_attributes:
             keys_list.append(attribute)
-        if keys_list[0] == "name" and keys_list[1] == "description" and keys_list[2] == "price" and keys_list[3] == "quantity":
+        if (
+            keys_list[0] == "name"
+            and keys_list[1] == "description"
+            and keys_list[2] == "price"
+            and keys_list[3] == "quantity"
+        ):
             name, description, price, quantity = one_more_product.values()
         else:
             raise Exception("Ошибка: Проверьте корректность описания товара")
