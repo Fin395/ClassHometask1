@@ -1,3 +1,6 @@
+from typing import Any
+from unittest.mock import patch
+
 from src.main import Product
 import pytest
 
@@ -64,21 +67,36 @@ def test_new_product_creation_invalid_data() -> None:
         Product.new_product(product_data)
     assert str(exc_info.value) == "Ошибка: Проверьте корректность описания товара"
 
+def test_price_property(forth_product: Product) -> None:
+    """ Получаем доступ к значению приватного атрибута "self.__price" """
+    assert forth_product.price == 123000.0
 
-def test_price_update_if_below_zero(capsys, forth_product):
+
+def test_price_update_if_below_zero(capsys: Any, forth_product: Product) -> None:
+    """ Изменяем цену на отрицательное значение """
     forth_product.price = -100
     message = capsys.readouterr()
     assert message.out.strip() == "Цена не должна быть нулевая или отрицательная"
 
 
-def test_price_update_if_zero(capsys, forth_product):
+def test_price_update_if_zero(capsys: Any, forth_product: Product) -> None:
+    """ Изменяем цену на нулевое значение """
     forth_product.price = 0
     message = capsys.readouterr()
     assert message.out.strip() == "Цена не должна быть нулевая или отрицательная"
+    assert forth_product.price == 123000.0
 
 
-def test_price_update_if_above_zero(forth_product):
+@patch("builtins.input", return_value="Y")
+def test_price_update_if_yes(mock_input, capsys: Any, forth_product: Product) -> None:
+    """ Понижаем цену при полученном подтверждении от пользователя """
     forth_product.price = 200
     assert forth_product.price == 200
 
+
+@patch("builtins.input", return_value="N")
+def test_price_update_if_no(mock_input, capsys: Any, forth_product: Product) -> None:
+    """ Отказываемся понижать цену, цена остается прежней """
+    forth_product.price = 200
+    assert forth_product.price == 123000.0
 
