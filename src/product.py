@@ -6,7 +6,7 @@ class Product:
 
     name: str
     description: str
-    price: float
+    __price: float
     quantity: int
 
     def __init__(self, name: str, description: str, price: float, quantity: int):
@@ -28,12 +28,12 @@ class Product:
 
     @property
     def price(self) -> float:
-        """ Создаем геттер для получения значения цены как приватного атрибута "self.__price" """
+        """Создаем геттер для получения значения цены как приватного атрибута "self.__price" """
         return self.__price
 
     @price.setter
     def price(self, new_price: float) -> None:
-        """ Создаем сеттер для установки нового значения приватного атрибута "self.__price" """
+        """Создаем сеттер для установки нового значения приватного атрибута "self.__price" """
         if new_price <= 0:
             print("Цена не должна быть нулевая или отрицательная")
             return

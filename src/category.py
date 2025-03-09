@@ -1,12 +1,14 @@
 from typing import Optional
+
 from src.product import Product
+
 
 class Category:
     """Создаем класс Category с атрибутами"""
 
     name: str
     description: str
-    products: list
+    __products: list
 
     category_count = 0
     product_count = 0
