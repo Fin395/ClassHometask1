@@ -1,4 +1,4 @@
-from src.main import Category, Product
+from src.main import Product
 
 
 def test_init_first_product(first_product: Product) -> None:
@@ -31,23 +31,3 @@ def test_init_forth_product(forth_product: Product) -> None:
     assert forth_product.description == "Фоновая подсветка"
     assert forth_product.price == 123000.0
     assert forth_product.quantity == 7
-
-
-def test_init_category(first_category: Category, second_category: Category) -> None:
-    """Проверяем корректность инициализации экземпляров класса Category (первой и второй категории)"""
-    assert first_category.name == "Смартфоны"
-    assert (
-        first_category.description
-        == "Смартфоны, как средство не только коммуникации, но и получения дополнительных функций для удобства жизни"
-    )
-    assert len(first_category.products) == 3
-    assert second_category.name == "Телевизоры"
-    assert (
-        second_category.description
-        == "Современный телевизор, который позволяет наслаждаться просмотром, станет вашим другом и помощником"
-    )
-    assert len(second_category.products) == 1
-    assert first_category.category_count == 2
-    assert second_category.category_count == 2
-    assert first_category.product_count == 4
-    assert second_category.product_count == 4
