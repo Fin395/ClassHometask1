@@ -101,7 +101,7 @@ def test_price_update_if_no(mock_input: Any, capsys: Any, forth_product: Product
 
 
 def test_product_str(first_product: Product) -> None:
-    """ Проверяем корректность строкового вывода экземпляра товара """
+    """Проверяем корректность строкового вывода экземпляра товара"""
     assert str(first_product) == "Samsung Galaxy S23 Ultra, 180000.0 руб. Остаток: 5 шт."
 
 

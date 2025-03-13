@@ -4,7 +4,7 @@ from src.product_iterator import ProductIterator
 
 
 def test_product_iterator(product_iterator: ProductIterator) -> None:
-    """ Проверяем корректность работы итератора """
+    """Проверяем корректность работы итератора"""
     iter(product_iterator)
     assert product_iterator.index == 0
     assert next(product_iterator).name == "Samsung Galaxy S23 Ultra"

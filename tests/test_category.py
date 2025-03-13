@@ -1,6 +1,6 @@
 from src.category import Category
 from src.product import Product
-import pytest
+
 
 def test_init_category(first_category: Category, second_category: Category) -> None:
     """Проверяем корректность инициализации экземпляров класса Category (первой и второй категории)"""
@@ -39,5 +39,5 @@ def test_add_product(first_category: Category, forth_product: Product) -> None:
 
 
 def test_category_str(first_category: Category) -> None:
-    """ Проверяем корректность строкового вывода экземпляра категории """
+    """Проверяем корректность строкового вывода экземпляра категории"""
     assert str(first_category) == "Смартфоны, количество продуктов: 27 шт."

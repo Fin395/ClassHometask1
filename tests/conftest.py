@@ -53,18 +53,18 @@ def second_category() -> Category:
 
 
 @pytest.fixture
-def product_with_amount1():
-    """ Фикстура продукта1 для проверки метода '__add__' """
+def product_with_amount1() -> Product:
+    """Фикстура продукта1 для проверки метода '__add__'"""
     return Product("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5)
 
 
 @pytest.fixture
-def product_with_amount2():
-    """ Фикстура продукта2 для проверки метода '__add__' """
+def product_with_amount2() -> Product:
+    """Фикстура продукта2 для проверки метода '__add__'"""
     return Product("Iphone 15", "512GB, Gray space", 210000.0, 8)
 
 
 @pytest.fixture
-def product_iterator(first_category):
-    """ Фикстура товара для проверки работы итератора """
+def product_iterator(first_category: Category) -> ProductIterator:
+    """Фикстура товара для проверки работы итератора"""
     return ProductIterator(first_category)
