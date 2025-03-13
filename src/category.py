@@ -21,6 +21,13 @@ class Category:
         Category.category_count += 1
         Category.product_count += len(products) if products else 0
 
+    def __str__(self) -> str:
+        """ Создаем метод для строкового отображения экземпляра класса с подсчетом общего количества товара """
+        total_amount = 0
+        for product in self.__products:
+            total_amount += product.quantity
+        return f"{self.name}, количество продуктов: {total_amount} шт."
+
     def add_product(self, product: Product) -> None:
         """Метод, который добавляет новый продукт в категорию"""
         self.__products.append(product)
