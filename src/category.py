@@ -22,7 +22,7 @@ class Category:
         Category.product_count += len(products) if products else 0
 
     def __str__(self) -> str:
-        """ Создаем метод для строкового отображения экземпляра класса с подсчетом общего количества товара """
+        """Создаем метод для строкового отображения экземпляра класса с подсчетом общего количества товара"""
         total_amount = 0
         for product in self.__products:
             total_amount += product.quantity
