@@ -31,7 +31,7 @@ class Category:
         """Создаем геттер для атрибута "self.__products", который будет выводить список товаров в виде строк"""
         product_str = ""
         for product in self.__products:
-            product_str += f"{product.name}, {product.price} руб. Остаток: {product.quantity} шт.\n"
+            product_str += f"{str(product)}\n"
         return product_str
 
     @property
