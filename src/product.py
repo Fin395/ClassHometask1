@@ -18,7 +18,7 @@ class Product:
 
     def __str__(self) -> str:
         """Создаем метод для строкового отображения экземпляра класса"""
-        return f"{self.name}, {self.__price}, Остаток: {self.quantity} шт."
+        return f"{self.name}, {self.__price} руб. Остаток: {self.quantity} шт."
 
     def __add__(self, other: "Product") -> Any:
         """Создаем метод, позволяющий складывать стоимость товаров"""
