@@ -16,6 +16,14 @@ class Product:
         self.__price = price
         self.quantity = quantity
 
+    def __str__(self) -> str:
+        """Создаем метод для строкового отображения экземпляра класса"""
+        return f"{self.name}, {self.__price} руб. Остаток: {self.quantity} шт."
+
+    def __add__(self, other: "Product") -> Any:
+        """Создаем метод, позволяющий складывать стоимость товаров"""
+        return self.__price * self.quantity + other.__price * other.quantity
+
     @classmethod
     def new_product(cls, one_more_product: dict) -> Any:
         """Создаем класс-метод для получения экземпляра на основе параметров товара из входного словаря"""

@@ -98,3 +98,12 @@ def test_price_update_if_no(mock_input: Any, capsys: Any, forth_product: Product
     """Отказываемся понижать цену, цена остается прежней"""
     forth_product.price = 200
     assert forth_product.price == 123000.0
+
+
+def test_product_str(first_product: Product) -> None:
+    """Проверяем корректность строкового вывода экземпляра товара"""
+    assert str(first_product) == "Samsung Galaxy S23 Ultra, 180000.0 руб. Остаток: 5 шт."
+
+
+def test_add(product_with_amount1: Product, product_with_amount2: Product) -> None:
+    assert (product_with_amount1 + product_with_amount2) == 2580000.0
