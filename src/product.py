@@ -1,8 +1,10 @@
+from src.base_product import BaseProduct
+
 from typing import Any
 
 
-class Product:
-    """Создаем класс Product с атрибутами"""
+class Product(BaseProduct):
+    """Создаем класс Product из базового абстрактного класса BaseProduct"""
 
     name: str
     description: str
@@ -33,7 +35,6 @@ class Product:
             return cls(**one_more_product)
         except Exception:
             raise Exception("Ошибка: Проверьте корректность описания товара")
-
 
     @property
     def price(self) -> float:
