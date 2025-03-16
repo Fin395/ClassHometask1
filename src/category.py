@@ -30,8 +30,11 @@ class Category:
 
     def add_product(self, product: Product) -> None:
         """Метод, который добавляет новый продукт в категорию"""
-        self.__products.append(product)
-        Category.product_count += 1
+        if isinstance(product, Product):
+            self.__products.append(product)
+            Category.product_count += 1
+        else:
+            raise TypeError
 
     @property
     def products(self) -> str:

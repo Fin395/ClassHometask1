@@ -3,7 +3,7 @@ from unittest.mock import patch
 
 import pytest
 
-from src.main import Product
+from src.product import Product
 
 
 def test_init_first_product(first_product: Product) -> None:
@@ -55,12 +55,7 @@ def test_new_product_creation() -> None:
 
 def test_new_product_creation_invalid_data() -> None:
     """Проверяем вызов исключения, если в словаре некорректные данные"""
-    product_data = {
-        "price": "Samsung Galaxy S23 Ultra",
-        "description": "256GB, Серый цвет, 200MP камера",
-        "name": 180000.0,
-        "quantity": 5,
-    }
+    product_data = "price: Samsung Galaxy S23 Ultra, description: 256GB, Серый цвет, 200MP камера, name: 180000.0, quantity: 5"
     with pytest.raises(Exception) as exc_info:
         Product.new_product(product_data)
     assert str(exc_info.value) == "Ошибка: Проверьте корректность описания товара"
