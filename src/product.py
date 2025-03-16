@@ -29,20 +29,11 @@ class Product:
     @classmethod
     def new_product(cls, one_more_product: dict) -> Any:
         """Создаем класс-метод для получения экземпляра на основе параметров товара из входного словаря"""
-        keys_list = []
-        new_attributes = one_more_product.keys()
-        for attribute in new_attributes:
-            keys_list.append(attribute)
-        if (
-            keys_list[0] == "name"
-            and keys_list[1] == "description"
-            and keys_list[2] == "price"
-            and keys_list[3] == "quantity"
-        ):
-            name, description, price, quantity = one_more_product.values()
-        else:
+        try:
+            return cls(**one_more_product)
+        except Exception:
             raise Exception("Ошибка: Проверьте корректность описания товара")
-        return cls(name, description, price, quantity)
+
 
     @property
     def price(self) -> float:
