@@ -22,7 +22,9 @@ class Product:
 
     def __add__(self, other: "Product") -> Any:
         """Создаем метод, позволяющий складывать стоимость товаров"""
-        return self.__price * self.quantity + other.__price * other.quantity
+        if type(other) == self.__class__:
+            return self.__price * self.quantity + other.__price * other.quantity
+        raise TypeError
 
     @classmethod
     def new_product(cls, one_more_product: dict) -> Any:
