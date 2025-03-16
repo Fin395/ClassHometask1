@@ -1,8 +1,11 @@
+import pytest
+
+from src.lawngrass import LawnGrass
 from src.smartphone import Smartphone
 
 
 def test_init_first_smartphone(first_smartphone: Smartphone, second_smartphone: Smartphone) -> None:
-    """Проверяем корректность инициализации объектов класса Smartphone """
+    """Проверяем корректность инициализации объектов класса Smartphone"""
     assert first_smartphone.name == "Samsung Galaxy S23 Ultra"
     assert first_smartphone.description == "256GB, Серый цвет, 200MP камера"
     assert first_smartphone.price == 180000.0
@@ -21,11 +24,12 @@ def test_init_first_smartphone(first_smartphone: Smartphone, second_smartphone: 
     assert second_smartphone.color == "Gray space"
 
 
-def test_add_smartphones(first_smartphone: Smartphone, second_smartphone: Smartphone) -> None:
+def test_add_smartphone(first_smartphone: Smartphone, second_smartphone: Smartphone) -> None:
     """Проверяем корректность сложения объектов класса Smartphone"""
     assert first_smartphone + second_smartphone == 2580000.0
 
 
-def test_add_smartphones_error(first_smartphone: Smartphone, second_smartphone: Smartphone) -> None:
+def test_add_smartphone_error(first_smartphone: Smartphone, first_grass: LawnGrass) -> None:
     """Проверяем возбуждение ошибки TypeError при сложении объектов разных классов"""
-
+    with pytest.raises(TypeError):
+        first_smartphone + first_grass

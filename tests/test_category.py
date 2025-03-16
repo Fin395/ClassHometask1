@@ -1,3 +1,5 @@
+import pytest
+
 from src.category import Category
 from src.product import Product
 
@@ -36,6 +38,13 @@ def test_add_product(first_category: Category, forth_product: Product) -> None:
     assert len(first_category.products_in_list) == 3
     first_category.add_product(forth_product)
     assert len(first_category.products_in_list) == 4
+
+
+def test_add_product_error(first_category: Category) -> None:
+    """Проверяем возбуждение ошибки при попытке добавить в категорию посторонний объект"""
+    with pytest.raises(TypeError):
+        first_category.add_product("Not a product")
+    assert len(first_category.products_in_list) == 3
 
 
 def test_category_str(first_category: Category) -> None:
