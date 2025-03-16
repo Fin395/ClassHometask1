@@ -3,7 +3,7 @@ from unittest.mock import patch
 
 import pytest
 
-from src.main import Product
+from src.product import Product
 
 
 def test_init_first_product(first_product: Product) -> None:

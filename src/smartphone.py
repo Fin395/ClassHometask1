@@ -12,7 +12,7 @@ class Smartphone(Product):
         quantity: int,
         efficiency: float,
         model: str,
-        memory: float,
+        memory: int,
         color: str,
     ):
         super().__init__(name, description, price, quantity)
