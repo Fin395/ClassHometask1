@@ -41,7 +41,8 @@ class Category:
         """Создаем геттер для атрибута "self.__products", который будет выводить список товаров в виде списка строк"""
         product_list = []
         for product in self.__products:
-            product_list.append(f"{str(product)}")
+            product = f"{str(product)}"
+            product_list.append(product)
         return product_list
 
     #    Переопределил данный метод (теперь товар выводится списком строк) для корректного подсчета
