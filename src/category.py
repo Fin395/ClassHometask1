@@ -47,7 +47,8 @@ class Category(OrderCategory):
         return product_list
 
     #    Переопределил данный метод (теперь товар выводится списком строк) для корректного подсчета
-    #    количества наименований товара в категории (len(category1.products), len(category2.products)
+    #    количества наименований товара в категории (len(category1.products), len(category2.products) в соответствии
+    #    с кодом main.py
     #    @property
     #    def products(self) -> str:
     #        """Создаем геттер для атрибута "self.__products", который будет выводить список товаров в виде строк"""
