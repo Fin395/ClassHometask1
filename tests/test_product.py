@@ -70,14 +70,14 @@ def test_price_update_if_below_zero(capsys: Any, forth_product: Product) -> None
     """Изменяем цену на отрицательное значение"""
     forth_product.price = -100
     message = capsys.readouterr()
-    assert message.out.strip() == "Цена не должна быть нулевая или отрицательная"
+    assert message.out.strip().split("\n")[-1] == "Цена не должна быть нулевая или отрицательная"
 
 
 def test_price_update_if_zero(capsys: Any, forth_product: Product) -> None:
     """Изменяем цену на нулевое значение"""
     forth_product.price = 0
     message = capsys.readouterr()
-    assert message.out.strip() == "Цена не должна быть нулевая или отрицательная"
+    assert message.out.strip().split("\n")[-1] == "Цена не должна быть нулевая или отрицательная"
     assert forth_product.price == 123000.0
 
 

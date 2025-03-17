@@ -27,11 +27,11 @@ def test_init_category(first_category: Category, second_category: Category) -> N
 
 def test_products_property(first_category: Category) -> None:
     """Проверяем корректность добавления нового товара в категорию"""
-    assert first_category.products == (
-        "Samsung Galaxy S23 Ultra, 180000.0 руб. Остаток: 5 шт.\n"
-        "Iphone 15, 210000.0 руб. Остаток: 8 шт.\n"
-        "Xiaomi Redmi Note 11, 31000.0 руб. Остаток: 14 шт.\n"
-    )
+    assert first_category.products == [
+        'Samsung Galaxy S23 Ultra, 180000.0 руб. Остаток: 5 шт.',
+        'Iphone 15, 210000.0 руб. Остаток: 8 шт.',
+        'Xiaomi Redmi Note 11, 31000.0 руб. Остаток: 14 шт.'
+    ]
 
 
 def test_add_product(first_category: Category, forth_product: Product) -> None:
