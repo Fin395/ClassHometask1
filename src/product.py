@@ -1,11 +1,10 @@
-from src.base_product import BaseProduct
-
 from typing import Any
 
+from src.base_product import BaseProduct
 from src.mixin_print import MixinPrint
 
 
-class Product(BaseProduct, MixinPrint):
+class Product(MixinPrint, BaseProduct):
     """Создаем класс Product из базового абстрактного класса BaseProduct"""
 
     name: str

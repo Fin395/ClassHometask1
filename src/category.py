@@ -37,12 +37,22 @@ class Category:
             raise TypeError
 
     @property
-    def products(self) -> str:
-        """Создаем геттер для атрибута "self.__products", который будет выводить список товаров в виде строк"""
-        product_str = ""
+    def products(self) -> list[str]:
+        """Создаем геттер для атрибута "self.__products", который будет выводить список товаров в виде списка строк"""
+        product_list = []
         for product in self.__products:
-            product_str += f"{str(product)}\n"
-        return product_str
+            product_list.append(f"{str(product)}")
+        return product_list
+
+    #    Переопределил данный метод (теперь товар выводится списком строк) для корректного подсчета
+    #    количества наименований товара в категории (len(category1.products), len(category2.products)
+    #    @property
+    #    def products(self) -> str:
+    #        """Создаем геттер для атрибута "self.__products", который будет выводить список товаров в виде строк"""
+    #        product_str = ""
+    #        for product in self.__products:
+    #            product_str += f"{str(product)}\n"
+    #        return product_str
 
     @property
     def products_in_list(self) -> list:
