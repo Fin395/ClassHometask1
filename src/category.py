@@ -1,9 +1,10 @@
 from typing import Optional
 
+from src.base_order_category import OrderCategory
 from src.product import Product
 
 
-class Category:
+class Category(OrderCategory):
     """Создаем класс Category с атрибутами"""
 
     name: str
