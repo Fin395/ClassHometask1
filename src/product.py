@@ -2,8 +2,10 @@ from src.base_product import BaseProduct
 
 from typing import Any
 
+from src.mixin_print import MixinPrint
 
-class Product(BaseProduct):
+
+class Product(BaseProduct, MixinPrint):
     """Создаем класс Product из базового абстрактного класса BaseProduct"""
 
     name: str
@@ -11,12 +13,13 @@ class Product(BaseProduct):
     __price: float
     quantity: int
 
-    def __init__(self, name: str, description: str, price: float, quantity: int):
+    def __init__(self, name: str, description: str, price: float, quantity: int) -> None:
         """Метод для инициализации экземпляра класса Product. Задаем значения атрибутам экземпляра"""
         self.name = name
         self.description = description
         self.__price = price
         self.quantity = quantity
+        super().__init__()
 
     def __str__(self) -> str:
         """Создаем метод для строкового отображения экземпляра класса"""

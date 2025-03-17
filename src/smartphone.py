@@ -14,7 +14,8 @@ class Smartphone(Product):
         model: str,
         memory: int,
         color: str,
-    ):
+    ) -> None:
+        """Инициализируем экземпляр дочернего класса Smartphone с использованием super()"""
         super().__init__(name, description, price, quantity)
         self.efficiency = efficiency
         self.model = model
