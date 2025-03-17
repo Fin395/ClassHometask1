@@ -12,7 +12,7 @@ class Order(OrderCategory):
     product_count = 0
     ID = 1
 
-    def __init__(self, product, quantity):
+    def __init__(self, product: Product, quantity: int) -> None:
         """Конструктор инициализации экземпляра класса Order"""
         self.product = product
         self.quantity = quantity
@@ -28,11 +28,16 @@ class Order(OrderCategory):
         if isinstance(self.product, Product):
             self.amount = self.quantity * self.product.price
             if self.quantity > self.product.quantity:
-                return f"Заказ № {self.get_order_id()}: На складе отсутствует необходимое количество товара. Максимальное количество: {self.product.quantity} шт."
+                return (
+                    f"Заказ № {self.get_order_id()}:"
+                    f" На складе отсутствует необходимое количество товара."
+                    f" Максимальное количество: {self.product.quantity} шт."
+                )
             else:
                 return f"Заказ № {self.get_order_id()}: {self.product.name}, {self.quantity} шт., {self.amount} руб."
         else:
             raise TypeError("Попробуйте выбрать другой товар")
+
 
 if __name__ == "__main__":
 

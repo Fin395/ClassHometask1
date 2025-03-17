@@ -11,6 +11,6 @@ class OrderCategory(ABC):
         pass
 
     @abstractmethod
-    def __str__(self, *args: Any, **kwargs: Any) -> None:
+    def __str__(self, *args: Any, **kwargs: Any) -> str:
         """Метод для строкового отображения экземпляра класса"""
         pass
