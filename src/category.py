@@ -1,5 +1,4 @@
-from typing import Optional
-
+from typing import Optional, Any
 from src.base_order_category import OrderCategory
 from src.product import Product
 
@@ -63,3 +62,10 @@ class Category(OrderCategory):
         Создаем геттер для атрибута "self.__products" для получения информации о количества товара в списке при
         инициализации экземпляров класса "Category" """
         return self.__products
+
+    def middle_price(self) -> Any:
+        """Метод подсчета среднего ценника товаров с обработкой ошибки, если список товаров пустой"""
+        try:
+            return round(sum([product.price for product in self.__products]) / len(self.__products), 2)
+        except ZeroDivisionError:
+            return 0
