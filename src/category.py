@@ -1,9 +1,10 @@
 from typing import Optional
 
+from src.base_order_category import OrderCategory
 from src.product import Product
 
 
-class Category:
+class Category(OrderCategory):
     """Создаем класс Category с атрибутами"""
 
     name: str
@@ -13,7 +14,7 @@ class Category:
     category_count = 0
     product_count = 0
 
-    def __init__(self, name: str, description: str, products: Optional[list] = None):
+    def __init__(self, name: str, description: str, products: Optional[list] = None) -> None:
         """Метод для инициализации экземпляра класса Category. Задаем значения атрибутам экземпляра"""
         self.name = name
         self.description = description
@@ -37,12 +38,24 @@ class Category:
             raise TypeError
 
     @property
-    def products(self) -> str:
-        """Создаем геттер для атрибута "self.__products", который будет выводить список товаров в виде строк"""
-        product_str = ""
+    def products(self) -> list[str]:
+        """Создаем геттер для атрибута "self.__products", который будет выводить список товаров в виде списка строк"""
+        product_list = []
         for product in self.__products:
-            product_str += f"{str(product)}\n"
-        return product_str
+            product = f"{str(product)}"
+            product_list.append(product)
+        return product_list
+
+    #    Переопределил данный метод (теперь товар выводится списком строк) для корректного подсчета
+    #    количества наименований товара в категории (len(category1.products), len(category2.products) в соответствии
+    #    с кодом main.py
+    #    @property
+    #    def products(self) -> str:
+    #        """Создаем геттер для атрибута "self.__products", который будет выводить список товаров в виде строк"""
+    #        product_str = ""
+    #        for product in self.__products:
+    #            product_str += f"{str(product)}\n"
+    #        return product_str
 
     @property
     def products_in_list(self) -> list:
