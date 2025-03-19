@@ -1,5 +1,6 @@
 from typing import Optional, Any
 from src.base_order_category import OrderCategory
+from src.exception import ZeroQuantityProduct
 from src.product import Product
 
 
@@ -31,10 +32,19 @@ class Category(OrderCategory):
     def add_product(self, product: Product) -> None:
         """Метод, который добавляет новый продукт в категорию"""
         if isinstance(product, Product):
-            self.__products.append(product)
-            Category.product_count += 1
+            if product.quantity == 0:
+                raise ZeroQuantityProduct("Товар с нулевым количеством не может быть добавлен")
+            try:
+                self.__products.append(product)
+            except ZeroQuantityProduct as e:
+                print(f"Ошибка при добавлении товара: {e}")
+            else:
+                Category.product_count += 1
+                print("Товар добавлен")
+            finally:
+                print("Обработка добавления товара завершена")
         else:
-            raise TypeError
+            raise TypeError("Объект не является продуктом")
 
     @property
     def products(self) -> list[str]:

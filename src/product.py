@@ -1,6 +1,7 @@
 from typing import Any
 
 from src.base_product import BaseProduct
+from src.exception import ZeroQuantityProduct
 from src.mixin_print import MixinPrint
 
 
@@ -17,10 +18,11 @@ class Product(MixinPrint, BaseProduct):
         self.name = name
         self.description = description
         self.__price = price
-        self.quantity = quantity
         if quantity == 0:
             raise ValueError("Товар с нулевым количеством не может быть добавлен")
+        self.quantity = quantity
         super().__init__()
+
 
     def __str__(self) -> str:
         """Создаем метод для строкового отображения экземпляра класса"""

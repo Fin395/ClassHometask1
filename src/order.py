@@ -1,4 +1,5 @@
 from src.base_order_category import OrderCategory
+from src.exception import ZeroQuantityProduct
 from src.product import Product
 
 
@@ -18,6 +19,7 @@ class Order(OrderCategory):
         self.quantity = quantity
         self.id = self.ID
         Order.ID += 1
+
 
     def get_order_id(self) -> int:
         """Метод, возвращающий значение порядкового номера заказа"""
@@ -43,7 +45,7 @@ if __name__ == "__main__":
 
     product1 = Product("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5)
     product2 = Product("Iphone 15", "512GB, Gray space", 210000.0, 8)
-    order1 = Order(product1, 3)
+    order1 = Order(product1, 0)
     order2 = Order(product1, 8)
     order3 = Order(product2, 9)
     order4 = Order(product2, 4)

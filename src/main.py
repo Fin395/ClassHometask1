@@ -1,5 +1,6 @@
 from src.category import Category
 from src.product import Product
+from src.exception import ZeroQuantityProduct
 
 
 if __name__ == '__main__':
@@ -21,3 +22,10 @@ if __name__ == '__main__':
 
     category_empty = Category("Пустая категория", "Категория без продуктов", [])
     print(category_empty.middle_price())
+
+    # try:
+    #category1.add_product(Product("Xiaomi Redmi Note 12", "1024GB, Синий", 31000.0, 88))
+    # # except ValueError:
+    # #     print(
+    # #         "Возникла ошибка ValueError прерывающая работу программы при попытке добавить продукт с нулевым количеством")
+
