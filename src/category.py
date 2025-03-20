@@ -32,19 +32,9 @@ class Category(OrderCategory):
     def add_product(self, product: Product) -> None:
         """Метод, который добавляет новый продукт в категорию"""
         if isinstance(product, Product):
-            if product.quantity == 0:
-                raise ZeroQuantityProduct("Товар с нулевым количеством не может быть добавлен")
-            try:
-                self.__products.append(product)
-            except ZeroQuantityProduct as e:
-                print(f"Ошибка при добавлении товара: {e}")
-            else:
-                Category.product_count += 1
-                print("Товар добавлен")
-            finally:
-                print("Обработка добавления товара завершена")
+            self.__products.append(product)
         else:
-            raise TypeError("Объект не является продуктом")
+            raise TypeError("Проверьте правильность описания товара")
 
     @property
     def products(self) -> list[str]:

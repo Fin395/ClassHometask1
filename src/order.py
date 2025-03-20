@@ -8,7 +8,7 @@ class Order(OrderCategory):
 
     product_name: str
     quantity: int
-    amount: float
+    total_amount: float
 
     product_count = 0
     ID = 1
@@ -16,40 +16,39 @@ class Order(OrderCategory):
     def __init__(self, product: Product, quantity: int) -> None:
         """Конструктор инициализации экземпляра класса Order"""
         self.product = product
-        self.quantity = quantity
         self.id = self.ID
         Order.ID += 1
+        try:
+            if quantity == 0:
+                raise ZeroQuantityProduct
+            elif quantity > self.product.quantity:
+                raise Exception
+        except ZeroQuantityProduct as e:
+            print(f"Заказ № {self.id}: Ошибка при добавлении товара в заказ: {e}")
+        except Exception:
+            print(f"Заказ № {self.id}:На складе отсутствует необходимое количество товара. Максимальное количество: {self.product.quantity} шт.")
+        else:
+            self.quantity = quantity
+            self.total_amount = self.get_total_amount()
+            print("Товар добавлен")
+        finally:
+            print("Обработка добавления товара завершена")
 
-
-    def get_order_id(self) -> int:
-        """Метод, возвращающий значение порядкового номера заказа"""
-        return self.id
+    def get_total_amount(self):
+        self.total_amount = self.quantity * self.product.price
+        return self.total_amount
 
     def __str__(self) -> str:
         """Создаем метод для строкового отображения экземпляра класса с подсчетом стоимости заказа"""
-        if isinstance(self.product, Product):
-            self.amount = self.quantity * self.product.price
-            if self.quantity > self.product.quantity:
-                return (
-                    f"Заказ № {self.get_order_id()}:"
-                    f" На складе отсутствует необходимое количество товара."
-                    f" Максимальное количество: {self.product.quantity} шт."
-                )
-            else:
-                return f"Заказ № {self.get_order_id()}: {self.product.name}, {self.quantity} шт., {self.amount} руб."
-        else:
-            raise TypeError("Попробуйте выбрать другой товар")
+        return f"Заказ № {self.id}: {self.product.name}, {self.quantity} шт., {self.total_amount} руб."
+
 
 
 if __name__ == "__main__":
 
     product1 = Product("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5)
-    product2 = Product("Iphone 15", "512GB, Gray space", 210000.0, 8)
-    order1 = Order(product1, 0)
-    order2 = Order(product1, 8)
-    order3 = Order(product2, 9)
-    order4 = Order(product2, 4)
-    print(order1)
+    product2 = Product("Iphone 15", "512GB, Gray space", 210000.0, 18)
+    order1 = Order(product1, 8)
+    order2 = Order(product1, 4)
     print(order2)
-    print(order3)
-    print(order4)
+    order3 = Order(product1, 0)
