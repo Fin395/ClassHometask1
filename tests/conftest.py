@@ -100,5 +100,14 @@ def second_grass() -> LawnGrass:
 
 
 @pytest.fixture
-def category_without_products():
+def category_without_products() -> Category:
+    """Фикстура для тестирования расчета средней цены, если товар в категории отсутствует"""
     return Category("Пустая категория", "Категория без продуктов", [])
+
+
+@pytest.fixture
+def product_zero_quantity():
+    """Фикстура для проверки выброса исключения при попытке создать продукт с нулевым количеством"""
+    return Product("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 0)
+
+

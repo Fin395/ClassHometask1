@@ -60,3 +60,8 @@ def test_add_product_smartphone(first_category: Category, first_smartphone: Smar
 def test_category_str(first_category: Category) -> None:
     """Проверяем корректность строкового вывода экземпляра категории"""
     assert str(first_category) == "Смартфоны, количество продуктов: 27 шт."
+
+
+def test_middle_price(first_category, category_without_products):
+    assert first_category.middle_price() == 140333.33
+    assert category_without_products.middle_price() == 0
