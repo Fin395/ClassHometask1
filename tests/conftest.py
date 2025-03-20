@@ -97,3 +97,8 @@ def first_grass() -> LawnGrass:
 def second_grass() -> LawnGrass:
     """Создаем фикстуру для тестирования второго газона"""
     return LawnGrass("Газонная трава 2", "Выносливая трава", 450.0, 15, "США", "5 дней", "Темно-зеленый")
+
+
+@pytest.fixture
+def category_without_products():
+    return Category("Пустая категория", "Категория без продуктов", [])
