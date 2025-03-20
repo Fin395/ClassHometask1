@@ -34,7 +34,7 @@ class Order(OrderCategory):
         else:
             self.quantity = quantity
             self.total_amount = self.get_total_amount()
-            print("Товар добавлен")
+            print(f"Заказ № {self.id}: Товар добавлен")
         finally:
             print("Обработка добавления товара завершена")
 
@@ -45,7 +45,7 @@ class Order(OrderCategory):
 
     def __str__(self) -> str:
         """Создаем метод для строкового отображения заказа"""
-        return f"Заказ № {self.id}: {self.product.name}, {self.quantity} шт., {self.total_amount} руб."
+        return f"Ваш заказ: {self.product.name}, {self.quantity} шт., {self.total_amount} руб."
 
 
 if __name__ == "__main__":
