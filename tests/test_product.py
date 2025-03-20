@@ -104,3 +104,9 @@ def test_product_str(first_product: Product) -> None:
 
 def test_add(product_with_amount1: Product, product_with_amount2: Product) -> None:
     assert (product_with_amount1 + product_with_amount2) == 2580000.0
+
+
+def test_zero_quantity_product() -> None:
+    """Проверяем вызов исключения ValueError с указанным сообщением"""
+    with pytest.raises(ValueError, match="Товар с нулевым количеством не может быть добавлен"):
+        Product("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 0)
