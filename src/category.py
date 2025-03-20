@@ -1,6 +1,6 @@
-from typing import Optional, Any
+from typing import Any, Optional
+
 from src.base_order_category import OrderCategory
-from src.exception import ZeroQuantityProduct
 from src.product import Product
 
 

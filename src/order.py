@@ -26,7 +26,11 @@ class Order(OrderCategory):
         except ZeroQuantityProduct as e:
             print(f"Заказ № {self.id}: Ошибка при добавлении товара в заказ: {e}")
         except Exception:
-            print(f"Заказ № {self.id}:На складе отсутствует необходимое количество товара. Максимальное количество: {self.product.quantity} шт.")
+            print(
+                f""
+                f"Заказ № {self.id}:На складе отсутствует необходимое количество товара. "
+                f"Максимальное количество: {self.product.quantity} шт."
+            )
         else:
             self.quantity = quantity
             self.total_amount = self.get_total_amount()
@@ -34,14 +38,14 @@ class Order(OrderCategory):
         finally:
             print("Обработка добавления товара завершена")
 
-    def get_total_amount(self):
+    def get_total_amount(self) -> float:
+        """Рассчитываем общую стоимость товара"""
         self.total_amount = self.quantity * self.product.price
         return self.total_amount
 
     def __str__(self) -> str:
-        """Создаем метод для строкового отображения экземпляра класса с подсчетом стоимости заказа"""
+        """Создаем метод для строкового отображения заказа"""
         return f"Заказ № {self.id}: {self.product.name}, {self.quantity} шт., {self.total_amount} руб."
-
 
 
 if __name__ == "__main__":
