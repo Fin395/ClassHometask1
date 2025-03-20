@@ -34,9 +34,9 @@ class Order(OrderCategory):
         else:
             self.quantity = quantity
             self.total_amount = self.get_total_amount()
-            print(f"Заказ № {self.id}: Товар добавлен")
+            print(f"Заказ № {self.id}: Товар добавлен.")
         finally:
-            print("Обработка добавления товара завершена")
+            print("Обработка добавления товара завершена.")
 
     def get_total_amount(self) -> float:
         """Рассчитываем общую стоимость товара"""
