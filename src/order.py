@@ -22,10 +22,10 @@ class Order(OrderCategory):
             if quantity == 0:
                 raise ZeroQuantityProduct
             elif quantity > self.product.quantity:
-                raise Exception
+                raise ValueError
         except ZeroQuantityProduct as e:
             print(f"Заказ № {self.id}: Ошибка при добавлении товара в заказ: {e}")
-        except Exception:
+        except ValueError:
             print(
                 f""
                 f"Заказ № {self.id}:На складе отсутствует необходимое количество товара. "
