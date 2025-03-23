@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import Any, Optional
 
 from src.base_order_category import OrderCategory
 from src.product import Product
@@ -33,9 +33,8 @@ class Category(OrderCategory):
         """Метод, который добавляет новый продукт в категорию"""
         if isinstance(product, Product):
             self.__products.append(product)
-            Category.product_count += 1
         else:
-            raise TypeError
+            raise TypeError("Проверьте правильность описания товара")
 
     @property
     def products(self) -> list[str]:
@@ -63,3 +62,10 @@ class Category(OrderCategory):
         Создаем геттер для атрибута "self.__products" для получения информации о количества товара в списке при
         инициализации экземпляров класса "Category" """
         return self.__products
+
+    def middle_price(self) -> Any:
+        """Метод подсчета среднего ценника товаров с обработкой ошибки, если список товаров пустой"""
+        try:
+            return round(sum([product.price for product in self.__products]) / len(self.__products), 2)
+        except ZeroDivisionError:
+            return 0
